@@ -1,46 +1,243 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.smarttmt</groupId>
     <artifactId>fielapws</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>app-client</packaging>
-
     <name>fielapws</name>
-
+    <description>
+        Desarrollo para el proceso de integracion con la compñia wsecurity para el procesod e firma digital.
+    </description>
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.plugin>3.6.0</maven.compiler.plugin>
+        <maven.plugin.report>2.9</maven.plugin.report>
+        <maven.plugin.javadoc>3.0.0</maven.plugin.javadoc>
+        <junit.platform.version>1.0.0-M2</junit.platform.version>
+        <junit.jupiter.version>5.0.0-M2</junit.jupiter.version>
+        <maven.surefire.plugin>2.19</maven.surefire.plugin>
+        <maven.shared.jar>1.2</maven.shared.jar>
+        <maven.acr.plugin>3.0.0</maven.acr.plugin> 
+        <bcel.findbugs>6.0</bcel.findbugs>
+        <findbugs.maven.plugin>3.0.2</findbugs.maven.plugin>
+        <com.puppycrawl.tools>7.2</com.puppycrawl.tools> 
+        <maven.checkstyle.plugin>2.17</maven.checkstyle.plugin>      
+        <maven.junit>4.12</maven.junit>
     </properties>
-
+    <distributionManagement>
+        <site>
+            <id>Smart TMT</id>
+            <name>Smart TMT</name>
+            <url>www.smarttmt.co</url>
+        </site>
+    </distributionManagement>   
+    <url>https://github.com/daviaro/fielapws.git</url>
+    <organization>
+        <name>Smart TMT</name>
+        <url>http://www.smarttmt.com</url>
+    </organization>
+    <contributors>
+        <contributor>
+            <name>Diego Vargas</name>
+            <email>master001@smarttmt.com</email>
+            <url/>
+            <organization>Smart TMT</organization>
+            <organizationUrl>www.smarttmt.com</organizationUrl>
+            <roles>
+                <role>SCRUM Master</role>
+            </roles>
+            <timezone>America/Bogota</timezone>
+            <properties>                
+                <gtalk>master001@smarttmt.com</gtalk>
+            </properties>
+        </contributor>
+        <contributor>
+            <name>Andres Holguin</name>
+            <email>lider.desarrollo@smarttmt.com</email>
+            <url/>
+            <organization>Smart TMT</organization>
+            <organizationUrl>www.smarttmt.com</organizationUrl>
+            <roles>
+                <role>Lider Desarrollo</role>
+            </roles>
+            <timezone>America/Bogota</timezone>
+            <properties>
+                <gtalk>lider.desarrollo@smarttmt.com</gtalk>
+            </properties>
+        </contributor>
+        <contributor>
+            <name>Oswaldo Solarte</name>
+            <email>oswaldo.solarte@correounivalle.edu.co</email>
+            <url/>
+            <organization>Universidad del Valle</organization>
+            <organizationUrl>www.smarttmt.com</organizationUrl>
+            <roles>
+                <role>Profesor Universidad del valle y auditor de la pasantia.</role>
+            </roles>
+            <timezone>America/Bogota</timezone>
+            <properties>
+                <gtalk>oswaldo.solarte@correounivalle.edu.co</gtalk>
+            </properties>
+        </contributor>
+    </contributors>
+    <developers>
+        <developer>
+            <id>dar092</id>
+            <name>Adalbert David Aroca Lancheros</name>
+            <email>ingeniero.desarrollo001@smarttmt.com</email>
+            <url>https://twitter.com/daviaroc</url>
+            <organization>Smart TMT</organization>
+            <organizationUrl>www.smarttmt.com</organizationUrl>
+            <roles>
+                <role>Ingeniero de desarrollo Master I</role>
+            </roles>
+            <timezone>America/Bogota</timezone>
+            <properties>
+                <gtalk>ingeniero.desarrollo001@smarttmt.com</gtalk>
+            </properties>
+        </developer>
+    </developers>    
     <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <version>1.3</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.10.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.10.0</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>2.26</version>
+        </dependency>
+         <dependency>
+            <groupId>org.glassfish.jersey.inject</groupId>
+            <artifactId>jersey-hk2</artifactId>
+            <version>2.26</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.connectors</groupId>
+            <artifactId>jersey-grizzly-connector</artifactId>
+            <version>2.26</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+            <version>2.26</version>
+        </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <version>${maven.compiler.plugin}</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>${maven.compiler.target}</source>
+                    <target>${maven.compiler.target}</target>
                     <compilerArguments>
                         <endorseddirs>${endorsed.dir}</endorseddirs>
                     </compilerArguments>
                 </configuration>
             </plugin>
             <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin}</version>
+                <configuration>
+                    <!-- <includes>
+                        <include>**/PropertyProducerTest.java</include>
+                    </includes>-->
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.junit.platform</groupId>
+                        <artifactId>junit-platform-surefire-provider</artifactId>
+                        <version>${junit.platform.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.junit.jupiter</groupId>
+                        <artifactId>junit-jupiter-engine</artifactId>
+                        <version>${junit.jupiter.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${maven.plugin.report}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.shared</groupId>
+                        <artifactId>maven-shared-jar</artifactId>
+                        <version>${maven.shared.jar}</version>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>org.apache.bcel</groupId>
+                                <artifactId>bcel</artifactId>
+                            </exclusion>
+                        </exclusions>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.google.code.findbugs</groupId>
+                        <artifactId>bcel-findbugs</artifactId>
+                        <version>${bcel.findbugs}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>${findbugs.maven.plugin}</version>
+                <configuration>
+                    <threshold>High</threshold>
+                    <effort>Default</effort>
+                    <skipEmptyReport>false</skipEmptyReport>
+                    <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>analyze-compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-acr-plugin</artifactId>
-                <version>1.0</version>
+                <version>${maven.acr.plugin}</version>
                 <extensions>true</extensions>
                 <configuration>
                     <archive>
@@ -75,7 +272,49 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven.checkstyle.plugin}</version>
+                <configuration>
+                    <configLocation>src/main/resources/checkstyle.xml</configLocation>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>checkstyle</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <failOnViolation>true</failOnViolation>
+                            <logViolationsToConsole>true</logViolationsToConsole>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>${com.puppycrawl.tools}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
         </plugins>
     </build>
-
+    <reporting>
+        <outputDirectory>${project.build.directory}/site</outputDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven.plugin.javadoc}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${maven.plugin.report}</version>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
